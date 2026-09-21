@@ -1,0 +1,13 @@
+{
+  "name": "ohana-astronixa-landing-page",
+  "version": "1.0.0",
+  "description": "Website Landing Page Astronixa Global - Huong Kunkuns",
+  "main": "app.js",
+  "scripts": {
+    "deploy": "vercel",
+    "deploy:prod": "vercel --prod"
+  },
+  "devDependencies": {
+    "vercel": "^59.23.2"
+  }
+}
