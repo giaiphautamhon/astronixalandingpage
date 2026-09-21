@@ -8,16 +8,17 @@
 window.ASTRONIXA_CONFIG = {
   // 1. Thông tin cá nhân & Chức danh
   name: "Hương Kunkuns",
-  role: "Đối Tác Chiến Lược Astronixa Việt Nam",
-  bio: "Đối tác chiến lược tiên phong ứng dụng AI & Blockchain vào vận hành doanh nghiệp và phát triển hệ sinh thái Affiliate toàn cầu — trực tiếp đồng hành, định hướng chiến lược và hỗ trợ bạn xây dựng dòng thu nhập bền vững cùng Super App Ohana.",
+  role: "CHUYÊN GIA TÂM LÝ, COACHING CHUYỂN HÓA & PHÁT TRIỂN THƯƠNG HIỆU CÁ NHÂN",
+  bio: "Đồng hành cùng Coach, Trainer, Chuyên gia và người làm kinh doanh tri thức trên hành trình phát triển từ bên trong đến bên ngoài: hiểu mình sâu hơn, chuyển hóa những rào cản nội tâm, phát triển tư duy và năng lực cá nhân, đồng thời xây dựng thương hiệu chân thật, biến chuyên môn thành nội dung, sản phẩm và hệ sinh thái kinh doanh bền vững.",
   avatar: "images/huong_kunkuns.jpg",
 
   // 2. Chứng thực & Danh hiệu nổi bật
   credentials: [
-    "Đối Tác Chiến Lược Astronixa Việt Nam",
-    "Chuyên gia cố vấn chiến lược kinh doanh AI & Công nghệ số",
-    "Ban điều hành phát triển thị trường Super App Ohana",
-    "Đào tạo & dẫn dắt hệ sinh thái Affiliate toàn cầu"
+    "Chuyên gia Coaching chuyển hóa & phát triển con người",
+    "Chuyên gia tham vấn và trị liệu tâm lý",
+    "Đào tạo & cố vấn chiến lược thương hiệu cá nhân cho Coach, Trainer và Chuyên gia",
+    "Mentor phát triển sản phẩm, nội dung & hệ sinh thái kinh doanh tri thức",
+    "Đào tạo ứng dụng AI trong xây dựng thương hiệu, nội dung và kinh doanh"
   ],
 
   // 3. Thông tin liên hệ trực tiếp
