@@ -31,6 +31,9 @@ window.ASTRONIXA_CONFIG = {
   // 4. Link đăng ký tài khoản Affiliate của riêng bạn
   affiliateUrl: "https://office.astronixa.com/sign-up/6212193214.html",
 
-  // 5. Link Gemini GEM AI
+  // 5. Link Google Sheets nhận Data khách hàng (Dán link Web App Apps Script vào đây)
+  googleSheetUrl: "",
+
+  // 6. Link Gemini GEM AI
   geminiGemUrl: "https://gemini.google.com/gem/48f2784b8f3c"
 };

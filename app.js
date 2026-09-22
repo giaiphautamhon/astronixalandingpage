@@ -381,32 +381,66 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 11. Form Handler
-  document.getElementById('regForm')?.addEventListener('submit', function(e) {
+  // 11. Form Handler (Gửi Google Sheets & Tự động mở Zalo)
+  document.getElementById('regForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '⏳ Đang lưu thông tin...';
+    }
+
     const fd = new FormData(this);
     const lead = {
-      name: fd.get('name'),
-      phone: fd.get('phone'),
-      email: fd.get('email'),
-      interest: fd.get('interest'),
-      time: new Date().toLocaleString('vi-VN')
+      name: fd.get('name') || '',
+      phone: fd.get('phone') || '',
+      email: fd.get('email') || '',
+      interest: fd.get('interest') || '',
+      time: new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' })
     };
+
+    // 1. Lưu dự phòng tại LocalStorage của trình duyệt
     try {
       const list = JSON.parse(localStorage.getItem('astronixa_leads') || '[]');
       list.push(lead);
       localStorage.setItem('astronixa_leads', JSON.stringify(list));
     } catch (err) {}
 
+    // 2. Bắn dữ liệu về Google Sheets (nếu đã cấu hình googleSheetUrl)
+    const sheetUrl = window.ASTRONIXA_CONFIG?.googleSheetUrl;
+    if (sheetUrl && sheetUrl.startsWith('http')) {
+      try {
+        await fetch(sheetUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(lead)
+        });
+      } catch (err) {
+        console.warn('Lỗi gửi Google Sheet:', err);
+      }
+    }
+
+    // 3. Cập nhật giao diện thông báo
     const okMsg = document.getElementById('okMsg');
     const benefits = document.getElementById('benefits');
     if (okMsg) okMsg.style.display = 'block';
     if (benefits) benefits.classList.add('show');
     this.reset();
-    showToast('🎉 Đăng ký thành công! Đang chuyển đến danh sách quyền lợi.');
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '✅ Đã gửi thành công!';
+    }
+
+    showToast('🎉 Đăng ký thành công! Đang tự động kết nối Zalo với Hương Kunkuns...');
+
+    // 4. Tự động chuyển hướng / mở Zalo cá nhân sau 1.2 giây
+    const zaloUrl = window.ASTRONIXA_CONFIG?.zalo || 'https://zalo.me/0989781168';
     setTimeout(() => {
-      if (benefits) benefits.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 250);
+      window.location.href = zaloUrl;
+    }, 1200);
   });
 
   // 12. Language Selector
